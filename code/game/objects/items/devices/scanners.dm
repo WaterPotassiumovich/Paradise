@@ -722,10 +722,7 @@ REAGENT SCANNER
 	origin_tech = null
 
 /obj/item/healthanalyzer/gem_analyzer/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/healthupgrade))
-		return ATTACK_CHAIN_BLOCKED_ALL
-
-	return ..()
+	return ATTACK_CHAIN_BLOCKED_ALL
 
 /obj/item/reagent_scanner
 	name = "reagent scanner"

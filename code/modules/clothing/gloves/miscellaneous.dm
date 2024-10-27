@@ -31,7 +31,7 @@
 	if(!user.mind || user.mind.martial_art)
 		return FALSE
 
-	if(!(user.a_intent == INTENT_HARM) || !proximity || isturf(A))
+	if(user.a_intent != INTENT_HARM || !proximity || isturf(A))
 		return FALSE
 
 	var/damage = rand(user.dna.species.punchdamagelow + user.physiology.punch_damage_low, user.dna.species.punchdamagehigh + user.physiology.punch_damage_high)

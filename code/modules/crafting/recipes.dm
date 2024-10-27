@@ -813,13 +813,9 @@
 	category = CAT_PRIMAL
 	alert_admins_on_craft = TRUE
 
-/datum/crafting_recipe/bonfire_coaltree
+/datum/crafting_recipe/bonfire/coaltree
 	name = "Bonfire (coaltree)"
-	time = 60
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/ash_flora/coaltree_log = 5)
-	result = /obj/structure/bonfire
-	category = CAT_PRIMAL
-	alert_admins_on_craft = TRUE
 
 /datum/crafting_recipe/rake //Category resorting incoming
 	name = "Rake"
