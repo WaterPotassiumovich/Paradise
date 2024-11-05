@@ -226,34 +226,40 @@
 /obj/effect/proc_holder/spell/remotetalk/cast(list/targets, mob/living/carbon/human/user = usr)
 	if(!ishuman(user))
 		return
+
 	if(user.mind?.miming) // Dont let mimes telepathically talk
-		to_chat(user,"<span class='warning'>You can't communicate without breaking your vow of silence.</span>")
+		to_chat(user, span_warning("You can't communicate without breaking your vow of silence."))
 		return
+
 	for(var/mob/living/target in targets)
 		var/datum/atom_hud/thoughts/hud = GLOB.huds[THOUGHTS_HUD]
 		hud.manage_hud(target, THOUGHTS_HUD_PRECISE)
-		// user.hud_typing = TRUE do not know what to do
 		user.thoughts_hud_set(TRUE)
 		var/say = tgui_input_text(user, "What do you wish to say?", "Project Mind")
-		// user.hud_typing = FALSE
 		user.typing = FALSE
-		if(!say || usr.stat)
+
+		if(!say || user.stat)
 			hud.manage_hud(target, THOUGHTS_HUD_DISPERSE)
 			user.thoughts_hud_set(FALSE)
 			return
+
 		user.thoughts_hud_set(TRUE, say_test(say))
 		addtimer(CALLBACK(hud, TYPE_PROC_REF(/datum/atom_hud/thoughts/, manage_hud), target, THOUGHTS_HUD_DISPERSE), 3 SECONDS)
 		say = strip_html(say)
-		say = pencode_to_html(say, usr, format = 0, fields = 0)
+		say = pencode_to_html(say, user, format = 0, fields = 0)
 		log_say("(TPATH to [key_name(target)]) [say]", user)
 		user.create_log(SAY_LOG, "Telepathically said '[say]' using [src]", target)
+
 		if(target.dna?.GetSEState(GLOB.remotetalkblock))
-			target.show_message("<span class='abductor'>You hear [user.real_name]'s voice: [say]</span>")
+			target.show_message(span_abductor("You hear [user.real_name]'s voice: [say]"))
+
 		else
-			target.show_message("<span class='abductor'>You hear a voice that seems to echo around the room: [say]</span>")
-		user.show_message("<span class='abductor'>You project your mind into [(target in user.get_visible_mobs()) ? target.name : "the unknown entity"]: [say]</span>")
+			target.show_message(span_abductor("You hear a voice that seems to echo around the room: [say]"))
+
+		user.show_message(span_abductor("You project your mind into [(target in user.get_visible_mobs()) ? target.name : "the unknown entity"]: [say]"))
+
 		for(var/mob/dead/observer/G in GLOB.player_list)
-			G.show_message("<i>Telepathic message from <b>[user]</b> ([ghost_follow_link(user, ghost=G)]) to <b>[target]</b> ([ghost_follow_link(target, ghost=G)]): [say]</i>")
+			G.show_message(span_italics("Telepathic message from <b>[user]</b> ([ghost_follow_link(user, ghost=G)]) to <b>[target]</b> ([ghost_follow_link(target, ghost=G)]): [say]"))
 
 
 /obj/effect/proc_holder/spell/mindscan
@@ -297,32 +303,39 @@
 	var/mob/living/user
 	if(href_list["user"])
 		user = locateUID(href_list["user"])
+
 	if(href_list["target"])
 		if(!user)
 			return
+
 		var/mob/living/target = locateUID(href_list["target"])
 		if(!(target in available_targets))
 			return
-		// target.hud_typing = TRUE
+
 		target.thoughts_hud_set(TRUE)
-		var/say = tgui_input_text(user, "What do you wish to say?", "Scan Mind")
-		// target.hud_typing = FALSE
+		var/say = tgui_input_text(target, "What do you wish to say?", "Scan Mind")
 		target.typing = FALSE
+
 		if(!say || target.stat)
 			target.thoughts_hud_set(FALSE)
 			return
+
 		target.thoughts_hud_set(TRUE, say_test(say))
 		say = strip_html(say)
 		say = pencode_to_html(say, target, format = 0, fields = 0)
 		user.create_log(SAY_LOG, "Telepathically responded '[say]' using [src]", target)
 		log_say("(TPATH to [key_name(target)]) [say]", user)
+
 		if(target.dna?.GetSEState(GLOB.remotetalkblock))
-			target.show_message("<span class='abductor'>You project your mind into [user.name]: [say]</span>")
+			target.show_message(span_abductor("You project your mind into [user.name]: [say]"))
+
 		else
-			target.show_message("<span class='abductor'>You fill the space in your thoughts: [say]</span>")
-		user.show_message("<span class='abductor'>You hear [target.name]'s voice: [say]</span>")
+			target.show_message(span_abductor("You fill the space in your thoughts: [say]"))
+
+		user.show_message(span_abductor("You hear [target.name]'s voice: [say]"))
+
 		for(var/mob/dead/observer/G in GLOB.player_list)
-			G.show_message("<i>Telepathic response from <b>[target]</b> ([ghost_follow_link(target, ghost=G)]) to <b>[user]</b> ([ghost_follow_link(user, ghost=G)]): [say]</i>")
+			G.show_message(span_italics("Telepathic response from <b>[target]</b> ([ghost_follow_link(target, ghost=G)]) to <b>[user]</b> ([ghost_follow_link(user, ghost=G)]): [say]"))
 
 
 /obj/effect/proc_holder/spell/mindscan/Destroy()

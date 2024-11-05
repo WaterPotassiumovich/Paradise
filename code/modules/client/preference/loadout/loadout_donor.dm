@@ -356,6 +356,12 @@
 	donator_tier = 3
 	cost = 1
 
+/datum/gear/donor/earring_NT
+	display_name = "Earrings NT"
+	path = /obj/item/clothing/ears/earrings/Nt
+	donator_tier = 3
+	cost = 1
+
 /datum/gear/donor/hijab
 	donator_tier = 1
 	cost = 1
@@ -415,4 +421,11 @@
 	cost = 1
 	display_name = "RD doll"
 	path = /obj/item/toy/plushie/rdplushie
+
+/datum/gear/donor/gsbplushie
+	donator_tier = 3
+	cost = 1
+	display_name = "GSBussy doll"
+	path = /obj/item/toy/plushie/gsbplushie
+
 
