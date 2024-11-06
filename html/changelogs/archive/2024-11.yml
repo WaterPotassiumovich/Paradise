@@ -20,11 +20,17 @@
   - bugfix: Cult fixes (#6090)
   - bugfix: dna vault hotfix (#6122)
 '2024-11-04':
+  Antoonij:
+  - add: ASHIE UPDATE (#5875)
   Daeberdir:
   - bugfix: Incorrect `mechanized` limb attaching. (#6125)
   - bugfix: Light fixture attach_chain blocks. (#6124)
   - bugfix: Fixed phazon noclip on teleport forbidden areas (#6121)
   - bugfix: Correct input target for `mindscan`. (#6120)
+  NightDawnFox:
+  - add: a lot of roboquest tweaks. (#5961)
+  NoName:
+  - bugfix: Earings in loadout (#6129)
   PiroMage:
   - bugfix: 'Nova Station #12 Patch  (#6115)'
   - bugfix: Conveyor Belt and Disposal Outlet on Cyberiad & Celestation. (#6109)
@@ -34,3 +40,26 @@
   - add: CE toolbet now can hold RCD and one more item (#6048)
   Valtor:
   - add: species age restrictions (#6101)
+  Vladisvell:
+  - bugfix: added failsafe check for elite fauna and chasms (#6126)
+  - server: Updated testmerge workflow (#6127)
+'2024-11-05':
+  Dictor:
+  - add: Entertainment monitor (#5900)
+  Explosi00N:
+  - server: Перевод лута с тендрилов Лаваленда (#6132)
+  LiquidPotroh:
+  - bugfix: Xenomorph fixes (#6110)
+  NightDawnFox:
+  - del: unathi rumble is gone (#6030)
+  - add: advanced laser & alien surgery kits (#6057)
+  Sheya:
+  - add: fishing rod is now craftable in R&D (#6045)
+  - add: Lockboxes on Taipan are no longer created in protholates and exosuit fabricators
+      (#6049)
+  Vladisvell:
+  - del: Перевод лута с тендрилов Лаваленда" (#6133)
+  github-actions[bot]:
+  - server: Automatic NanoMap Update (#6025)
+  littleboobs:
+  - qol: DNA effects translation (#6114)
