@@ -67,6 +67,8 @@
 	desc = "Хорошо прожаренный стейк."
 	resistance_flags = LAVA_PROOF | FIRE_PROOF
 	icon_state = "roasted_meat"
+	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	list_reagents = list("protein" = 4, "vitamin" = 1)
 	tastes = list("meat" = 1)
 	foodtype = MEAT
@@ -723,6 +725,8 @@
 	desc = "Жаренная лапка паука, теперь оно точно мертво."
 	resistance_flags = LAVA_PROOF | FIRE_PROOF
 	icon_state = "roasted_spiderleg"
+	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	list_reagents = list("protein" = 4, "vitamin" = 1)
 	tastes = list("cobwebs" = 1, "meat" = 1)
 	foodtype = MEAT
