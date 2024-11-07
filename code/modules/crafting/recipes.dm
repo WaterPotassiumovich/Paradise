@@ -684,7 +684,7 @@
 				/obj/item/hemostat/primitive_hemostat,
 				/obj/item/cautery/primitive_cautery,
 				/obj/item/scalpel/primitive_scalpel,
-				/obj/item/circular_saw/primitive_saw,
+				/obj/item/primitive_saw,
 				/obj/item/bonegel/primitive_bonegel,
 				/obj/item/FixOVein/primitive_FixOVein,
 				/obj/item/bonesetter/primitive_bonesetter)
@@ -1570,7 +1570,7 @@
 		/obj/item/stack/sheet/mineral/diamond = 5
 	)
 	result = list(/obj/item/pickaxe/diamond)
-  
+
 /datum/crafting_recipe/drone
 	name = "Inactive Drone"
 	result = list(/obj/item/inactive_drone)
