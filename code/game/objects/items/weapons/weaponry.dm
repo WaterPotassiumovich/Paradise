@@ -462,13 +462,17 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	var/stamina_damage = 22
 
-/obj/item/primitive_kolotushka/afterattack(mob/living/target, mob/living/user, params, def_zone, skip_attack_anim = FALSE)
-	if(isrobot(target))
-		if(prob(30))
-			target.flash_eyes(3 SECONDS)
-			target.Stun(3 SECONDS)
+/obj/item/primitive_kolotushka/afterattack(atom/target, mob/user, proximity, params, status)
+	if(!isliving(target) || !proximity || user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
+		return
 
-	if(ishuman(target))
-		target.apply_damage(stamina_damage, STAMINA)
+	var/mob/living/victim = target
+	if(isrobot(victim))
 		if(prob(30))
-			target.Knockdown(3 SECONDS)
+			victim.flash_eyes(3 SECONDS)
+			victim.Stun(3 SECONDS)
+
+	if(ishuman(victim))
+		victim.apply_damage(stamina_damage, STAMINA, blocked = victim.getarmor(user.zone_selected, MELEE))
+		if(prob(30))
+			victim.Knockdown(3 SECONDS)
