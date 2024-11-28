@@ -450,7 +450,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	block_chance = 30
 
-/obj/item/primitive_kolotushka
+/obj/item/kolotushka
 	name = "primitive kolotushka"
 	desc = "Простейшая дубина из кости, воплощает в себе силу природы и первобытную мощь."
 	icon_state = "kolotushka"
@@ -462,7 +462,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	var/stamina_damage = 22
 
-/obj/item/primitive_kolotushka/afterattack(atom/target, mob/user, proximity, params, status)
+/obj/item/kolotushka/afterattack(atom/target, mob/user, proximity, params, status)
 	if(!isliving(target) || !proximity || user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 		return
 
