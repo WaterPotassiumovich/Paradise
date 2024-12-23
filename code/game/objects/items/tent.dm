@@ -79,18 +79,17 @@
 
 	return TRUE
 
-/obj/structure/tent/grab_attack(mob/living/grabber, atom/movable/grabbed_thing)
+/obj/structure/tent/grab_attack(mob/living/grabber, mob/target)
 	. = TRUE
-	if(grabber.grab_state < GRAB_AGGRESSIVE || !ismob(grabbed_thing))
-		return .
 
-	var/mob/target = grabbed_thing
+	if(grabber.grab_state < GRAB_AGGRESSIVE || !istype(target))
+		return .
 	if(occupant)
 		grabber.balloon_alert(grabber, "палатка занята!")
 		return .
 
 	visible_message(span_notice("[grabber] starts putting [target] into [src]."))
-	if(!do_after(grabber, 2 SECONDS, target) || !target || !grabber || grabber.pulling != target || !grabber.Adjacent(src))
+	if(!do_after(grabber, 2 SECONDS, target) || !grabber.pulling != target)
 		return .
 
 	target.forceMove(src)
@@ -189,7 +188,7 @@
 		return
 
 	occupant.forceMove(loc)
-	if(!istype(occupant, /datum/species/unathi/draconid))
+	if(!isdraconid(occupant))
 		REMOVE_TRAIT(occupant, TRAIT_ASHSTORM_IMMUNE, "ash")
 	occupant = null
 
