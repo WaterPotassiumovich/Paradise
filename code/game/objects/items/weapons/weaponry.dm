@@ -440,11 +440,11 @@
 	w_class = WEIGHT_CLASS_BULKY
 	block_chance = 30
 
-/obj/item/kolotushka
-	name = "primitive kolotushka"
+/obj/item/bone_club
+	name = "колотушка"
 	desc = "Простейшая дубина из кости, воплощает в себе силу природы и первобытную мощь."
-	icon_state = "kolotushka"
-	item_state = "kolotushka"
+	icon_state = "bone_club"
+	item_state = "bone_club"
 	hitsound = 'sound/weapons/kolotushka_smash.ogg'
 	slot_flags = ITEM_SLOT_BELT
 	force = 3
@@ -452,7 +452,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	var/stamina_damage = 22
 
-/obj/item/kolotushka/afterattack(atom/target, mob/user, proximity, params, status)
+/obj/item/bone_club/afterattack(atom/target, mob/user, proximity, params, status)
 	if(!isliving(target) || !proximity || user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 		return
 
