@@ -699,7 +699,7 @@
 
 /datum/crafting_recipe/bonesword
 	name = "Bone Sword"
-	result = /obj/item/claymore/bone
+	result = /obj/item/melee/claymore/bone
 	time = 4 SECONDS
 	reqs = list(/obj/item/stack/sheet/bone = 3,
 				/obj/item/stack/sheet/sinew = 2)
@@ -1419,6 +1419,14 @@
 /datum/crafting_recipe/ntlockerpaint
 	name = "NT Special Mech Paintkit"
 	result = /obj/item/paintkit/lockermech_nt
+	time = 35
+	reqs = list(/obj/item/stack/sheet/cardboard = 5,
+				/obj/item/toy/crayon/spraycan = 1)
+	category = CAT_MISC
+
+/datum/crafting_recipe/ashedlockerpaint
+	name = "Ashed customisation kit"
+	result = /obj/item/paintkit/lockermech_ashed
 	time = 35
 	reqs = list(/obj/item/stack/sheet/cardboard = 5,
 				/obj/item/toy/crayon/spraycan = 1)
